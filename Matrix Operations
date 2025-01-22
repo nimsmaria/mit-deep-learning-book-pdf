@@ -1,0 +1,110 @@
+#include <stdio.h>
+ void read(int matrix[10][10],int r,int c);
+ void display(int matrix[10][10],int r,int c);
+ void uppertriangular(int matrix[10][10],int r,int c);
+ void rowsum(int matrix[10][10],int r,int c);
+ void search(int matrix[10][10],int r,int c);
+
+int main() 
+{
+ int matrix1[10][10],matrix2[10][10],sum[10][10],r1,r2,c1,c2,i,j;
+ printf("enter rowsize and columnsize of first matrix");
+ scanf("%d%d",&r1,&c1);
+ printf("enter rowsize and columnsize of second  matrix");
+ scanf("%d%d",&r2,&c2);
+ printf("enter the elements to first  matrix ");
+ read(matrix1,r1,c1);
+ printf("enter the elements to second  matrix ");
+ read(matrix2,r2,c2);
+ printf("elements of matrix1");
+ display(matrix1,r1,c1);
+ printf("elements of matrix2");
+ display(matrix2,r2,c2);
+ printf("upper triangular elements of first matrix are");
+ uppertriangular(matrix1,r1,c1);
+ rowsum(matrix1,r1,c1);
+ search(matrix2,r2,c2);
+ return 0;
+}   
+    void read(int matrix[10][10],int r,int c)
+    {
+        int i,j;
+        for(i=0;i<r;i++)
+        {
+            for(j=0;j<c;j++)
+            {
+                scanf("%d",&matrix[i][j]);
+            }
+        }
+    }
+    
+    void display(int matrix[10][10],int r,int c)
+    {
+        int i,j;
+        for(i=0;i<r;i++)
+        {
+            printf("\n");
+            for(j=0;j<c;j++)
+           {
+                printf("%d",matrix[i][j]);
+                printf("\t");
+           }
+           printf("\n");
+        }
+        
+    }
+
+   void uppertriangular(int matrix[10][10],int r,int c)
+   {
+        int i,j;
+        for(i=0;i<r;i++)
+        {
+            printf("\n");
+            for(j=0;j<c;j++)
+            {
+                if(i<j)
+                {
+                    printf("%d",matrix[i][j]); 
+                }
+            printf("\t");   
+            }
+        printf("\n");
+       }
+   }
+   
+   
+   
+   void rowsum(int matrix[10][10],int r,int c)
+   {
+        int i,j,sum=0;
+        for(i=0;i<r;i++)
+            {
+                for(j=0;j<c;j++)
+                {
+                    sum=sum+matrix[i][j];
+                }
+                printf("\nsum of row %d of matrix1 is %d",i+1,sum);
+            }
+   } 
+   
+   void search(int matrix[10][10],int r,int c)
+   {
+        int i,j,key,count=0;
+        printf("\nenter elements to search");
+        scanf("%d",&key);
+        for(i=0;i<r;i++)
+        {
+            for(j=0;j<c;j++)
+            {
+                if(matrix[i][j]==key)
+                {
+                    count=count+1; 
+                }
+            
+            }
+         }
+       if(count!=0)
+       {
+        printf("\nThe element %d found %d times ",key,count);
+       }
+   }
